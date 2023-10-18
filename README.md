@@ -14,7 +14,16 @@ The second goal requires additional context. While this competition was not dire
 
 
 ## How to Run
+1. Clone respository
+2. Run all cells in US_Champs.ipynb
 ### Accessibility
+With the number of athletes, it was challenging to find a unique combination of colors to represent them. This challenge was compounded in trying to find a discernible palette of colors that was also color-blind friendly. To account for this, the colors used are easily accessible and editable to customize user experience. 
+To change the colors, 
+1. Open the Excel file 2023 US Championships Results. (path: gym/data/)
+2. On the day 1 sheet, edit individual athlete [color names](https://matplotlib.org/stable/gallery/color/named_colors.html) (or HEX codes).
+3. Delete all pre-existing figures. (path: gym/figures/)
+4. Run all cells in US_Champs.ipynb
+5. Access new figures in gym/figures/.
 
 ## Methods
 
