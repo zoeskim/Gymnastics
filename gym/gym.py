@@ -1,10 +1,12 @@
-import pandas as pd
-import numpy as np
+""" Functions to import data, calculate and save all possible 5-member team scores, and search for duplicate combinations of 12 counting
+scores among these 5-member teams. """
+from os import path
 import itertools
 import math
 from openpyxl import Workbook, load_workbook
 from openpyxl.utils.dataframe import dataframe_to_rows
-from os import path
+import pandas as pd
+import numpy as np
 
 def import_data(return_dicts=False):
     """ Imports and combines data for both days of competition, calculates average by athlete, 
@@ -19,16 +21,15 @@ def import_data(return_dicts=False):
     # sort DF by descending all around average
     AA.sort_values(by='AA_avg', ascending=False, inplace=True)
 
-    # optionally return dictionaries mapping athletes to a color and an int
+    # optionally return dictionaries mapping each athlete to a color and an int
     if return_dicts:
         # create dict mapping each athlete to a unique color
-        name_color = AA[['Name', 'Color']].set_index('Name')['Color'].to_dict() 
+        name_color = AA[['Name', 'Color']].set_index('Name')['Color'].to_dict()
         # create dict to encode athlete names as ints to speed up later processes
         name_int = AA.reset_index().set_index('Name')['index'].to_dict()
         return AA, name_color, name_int
 
-    return AA
-   
+    return AA   
 
 def top_team_scores(AA, occ):
     """ For each possible 5-member team, calculates the team score using the top 3 scores
@@ -63,7 +64,7 @@ def top_team_scores(AA, occ):
         team_id.loc[i] = team_members
 
     return team_id, counting_scores, counting_names
-    
+
 
 def write_team_scores_to_excel(counting_names, counting_scores, sheet_name, num_athletes=28):
     """ Writes counting routine data for each possible 5-member team to Excel to avoid re-running all combinations.
@@ -75,8 +76,8 @@ def write_team_scores_to_excel(counting_names, counting_scores, sheet_name, num_
             'Name': np.reshape(np.array(counting_names), -1),
             'Score': np.reshape(counting_scores, -1)}
 
-    # create blank excel file if doesn't already exist       
-    if path.exists(r'./gym/data/Highest Scoring Teams.xlsx') == False:
+    # create blank excel file if doesn't already exist
+    if not path.exists(r'./gym/data/Highest Scoring Teams.xlsx'):
         wb = Workbook()
         wb.save(r'./gym/data/Highest Scoring Teams.xlsx')
 
@@ -85,17 +86,17 @@ def write_team_scores_to_excel(counting_names, counting_scores, sheet_name, num_
     sheet = wb.create_sheet(f'{sheet_name}')
     sheet.append(['Team ID', 'Event', 'Score_Rank', 'Name', 'Score'])
     for r in dataframe_to_rows(pd.DataFrame(team_data), index=False, header=False):
-            sheet.append(r)
-    
+        sheet.append(r)
     wb.save(r'./gym/data/Highest Scoring Teams.xlsx')
 
     return pd.DataFrame(team_data)
+
 
 def run_team_combinations(AA):
     """ Runs all possible team combinations with day 1, day 2, and average scores.
     Writes counting routine data to Excel, Team ID, score, and members to CSV. """
     sheet_names = ['Day 1', 'Day 2', 'Average']
-    
+
     # loop over all occasions
     for i, occ in enumerate(['day1', 'day2', 'avg']):
         # calculate scores for all possible team combinations
@@ -105,11 +106,12 @@ def run_team_combinations(AA):
         # write counting score data to Excel
         write_team_scores_to_excel(counting_names, counting_scores, sheet_names[i])
 
+
 def import_counting_scores(sheet_name):
     """ Used to import counting scores for the occasion specified by sheet name which are returned as a DataFrame.
     Checks for teams with all of the same counting scores, removes them from the aforementioned DataFrame, and returns all team data along
     with Team IDs of the removed equivalent teams. """
-    # import counting score data 
+    # import counting score data
     scores = pd.read_excel(r'./gym/data/Highest Scoring Teams.xlsx', sheet_name=sheet_name)
     # import team member combinations and sort by team score
     teams = pd.read_csv(f'./gym/data/teams/{sheet_name} Teams.csv')
@@ -121,6 +123,7 @@ def import_counting_scores(sheet_name):
 
     return scores, teams, removed_teams
 
+
 def find_same_3up(team_members, counting_scores):
     """ Iterates through all teams which share a team score to find teams that have different team members,
     but utilize the same set of 12 counting routines. Returns a lested list of arrays with Team IDs
@@ -131,15 +134,16 @@ def find_same_3up(team_members, counting_scores):
     unique_scores = duplicate_score_rows['Team Score'].unique() # get all scores that multiple teams achieved
     redundant_teams = []
 
+    # create dictionaries for encoding
+    _, _, name_int = import_data(return_dicts=True)
+    event_int = {'Vault': 0, 'Bars': 1, 'Beam': 2, 'Floor': 3}
+
     # iterate across all duplicated scores
     for score in unique_scores:
         # find all team id's that had team score of score
         team_ids = duplicate_score_rows[duplicate_score_rows['Team Score'] == score]['Team ID'].values
         same_score_teams = counting_scores[counting_scores['Team ID'].isin(team_ids)].copy()
-        same_score_teams.set_index('Team ID', inplace=True)
-        # create dictionaries for encoding
-        _, _, name_int = import_data(return_dicts=True)
-        event_int = {'Vault': 0, 'Bars': 1, 'Beam': 2, 'Floor': 3}
+        same_score_teams.set_index('Team ID', inplace=True)        
         # encode names and events for quick comparison of 3d arrays
         same_score_teams['Athlete ID'] = same_score_teams['Name'].apply(lambda x: name_int[x])
         same_score_teams['Event ID'] = same_score_teams['Event'].apply(lambda x: event_int[x])
@@ -152,7 +156,7 @@ def find_same_3up(team_members, counting_scores):
 
     return [ele for ele in redundant_teams if ele != []]
 
-# remove first instance to keep one 
+
 def remove_duplicate_3up(counting_scores, duplicates):
     """ Removes all but one observation of identified duplicates from DataFrame of all counting scores.
     Returns altered DataFrame along with a dictionary mapping the non-removed team to all its equivalent teams by ID. """
@@ -164,6 +168,7 @@ def remove_duplicate_3up(counting_scores, duplicates):
     counting_scores = counting_scores.drop(counting_scores[counting_scores['Team ID'].isin(duplicates_to_remove)].index)
 
     return counting_scores, duplicates_dict
+
 
 def get_duplicates_for_top_team_table(top_team_ids, removed_teams, team_df):
     """ Scans top team ids to check if any teams had duplicates removed for before plotting.
@@ -193,8 +198,8 @@ def get_duplicates_for_top_team_table(top_team_ids, removed_teams, team_df):
 
     if duplicate_team_ids:
         return duplicate_team_ids, team_constants, team_variables
-    else:
-        return 0, 0, 0
+
+    return 0, 0, 0
 
 def flatten(l):
     """ Flatten nested list. """
