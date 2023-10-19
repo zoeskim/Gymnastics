@@ -26,7 +26,7 @@ For Day 1, Day 2, and on average, a pair of bar charts and tables display the hi
 ## How to Use
 The notebook (US_Champs.ipynb) explains why each chart was created and insights gleaned from these charts, as well as background information to contextualize the data.
 1. Clone repository
-2. Run all cells in US_Champs.ipynb
+2. Run all cells in US_Champs.ipynb</br>
 *NOTE:* The tables corresponding to the highest-scoring teams won't display on the GitHub notebook preview.
 ### Accessibility
 With the number of athletes, it was challenging to find a unique combination of colors to represent them. This challenge was compounded in trying to find a discernible palette of colors that was also color-blind friendly. To account for this, the colors used are easily accessible and editable to customize user experience. 
