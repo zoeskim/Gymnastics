@@ -56,7 +56,7 @@ def AA_slope_plot(names, colors, AA_day1, AA_day2, n=10):
 
 def AA_avg_bar_chart(AA, n=10):
     """ Create bar plot of the top n average All Around scores,
-    color-coded by universal athlete colors and hatch-coded by event."""
+    color-coded by universal athlete colors and hatch-coded by event. """
     _, ax = plt.subplots(figsize=(10,10))
     # create temporary dataframe of top n entries sorted by average AA performance
     sort_AA = AA.sort_values(by='AA_avg', ascending=False)[:n]
@@ -85,7 +85,7 @@ def AA_avg_bar_chart(AA, n=10):
 
 def AA_by_day_bar_chart(AA, n=10):
     """ Create bar plots of the top n All Arounders for each night of competition,
-    color-coded by universal athlete colors and hatch-coded by event."""
+    color-coded by universal athlete colors and hatch-coded by event. """
     fig = plt.figure(figsize=(20, 10))
     # create gridspec to make two larger columns for plots, one smaller for legend
     gs = fig.add_gridspec(nrows=1, ncols=3, width_ratios=[3, 3, 1])
@@ -122,7 +122,7 @@ def AA_by_day_bar_chart(AA, n=10):
 
 def event_by_day_bar_chart(AA, event, n=10):
     """ Create bar plots of the top n event scores for each night of competition,
-    color-coded by universal athlete colors."""
+    color-coded by universal athlete colors. """
     _, ax = plt.subplots(1,2,figsize=(20, 10))
 
     # loop across both days

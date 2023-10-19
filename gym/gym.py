@@ -11,7 +11,7 @@ import numpy as np
 def import_data(return_dicts=False):
     """ Imports and combines data for both days of competition, calculates average by athlete, 
     and returns DataFrame(s) of all data. Optionally returns dictionaries mapping each athlete
-    to a color and an int."""
+    to a color and an int. """
     day1 = pd.read_excel(r'./gym/data/2023 US Championships Results.xlsx', sheet_name='Prelims')
     day2 = pd.read_excel(r'./gym/data/2023 US Championships Results.xlsx', sheet_name='Finals')
     # merge day 1 and day 2 results
