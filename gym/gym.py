@@ -10,7 +10,8 @@ import numpy as np
 
 def import_data(return_dicts=False):
     """ Imports and combines data for both days of competition, calculates average by athlete, 
-    and returns DataFrame(s) of all data (optionally second vault data)."""
+    and returns DataFrame(s) of all data. Optionally returns dictionaries mapping each athlete
+    to a color and an int."""
     day1 = pd.read_excel(r'./gym/data/2023 US Championships Results.xlsx', sheet_name='Prelims')
     day2 = pd.read_excel(r'./gym/data/2023 US Championships Results.xlsx', sheet_name='Finals')
     # merge day 1 and day 2 results
@@ -29,7 +30,7 @@ def import_data(return_dicts=False):
         name_int = AA.reset_index().set_index('Name')['index'].to_dict()
         return AA, name_color, name_int
 
-    return AA   
+    return AA
 
 def top_team_scores(AA, occ):
     """ For each possible 5-member team, calculates the team score using the top 3 scores
@@ -127,7 +128,7 @@ def import_counting_scores(sheet_name):
 def find_same_3up(team_members, counting_scores):
     """ Iterates through all teams which share a team score to find teams that have different team members,
     but utilize the same set of 12 counting routines. Returns a lested list of arrays with Team IDs
-    of teams which share duplicate routines. """
+    of teams which share duplicate routines. Called by import_counting_scores. """
     # narrow search to only observations which have a duplicate team score
     duplicate_score_rows = team_members[team_members.duplicated(subset='Team Score', keep=False)].copy()
     # find each unique score to iterate through
@@ -159,7 +160,8 @@ def find_same_3up(team_members, counting_scores):
 
 def remove_duplicate_3up(counting_scores, duplicates):
     """ Removes all but one observation of identified duplicates from DataFrame of all counting scores.
-    Returns altered DataFrame along with a dictionary mapping the non-removed team to all its equivalent teams by ID. """
+    Returns altered DataFrame along with a dictionary mapping the non-removed team to all its equivalent 
+    teams by ID. Called by import_counting_scores. """
     team_ids_to_remove = duplicates.copy()
     # create dict to map each team not removed to its duplicates to be removed
     duplicates_dict = {group[0]: group[1:] for group in team_ids_to_remove}
@@ -171,9 +173,9 @@ def remove_duplicate_3up(counting_scores, duplicates):
 
 
 def get_duplicates_for_top_team_table(top_team_ids, removed_teams, team_df):
-    """ Scans top team ids to check if any teams had duplicates removed for before plotting.
+    """ Scans top team ids to check if any teams had duplicates removed before plotting.
     Returns arrays of any duplicate teams present (by ID), the team members which are constant
-    among the duplicate teams, and those which are variable to annotate plots. """
+    among the duplicate teams, and those which are variable to annotate tables. """
     full_team_ids = []
     # search top team id's for teams which had removed duplicates to pull info for table
     for team in top_team_ids:
