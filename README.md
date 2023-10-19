@@ -43,4 +43,4 @@ All code was executed in Python, with the following libraries utilized:
 
 ## Future Applications
 I tried to make this code as generalized as possible, such that its visualization methods and algorithms can easily applied to other events. If you have interest in generating these graphs for other competitions, email me at zoeekimm@gmail.com.
-
+Expanding the scope, I have been thinking about trying to train a predictive model for future team building. However, this would likely necessitate the integration of more historical data, which presents a challenge, as data within the sport is not well documented. Additionally, there are many categorical factors, such as prior international experience and injury history. While I haven't decided on whether to pursue this yet, this code would be foundational to do so. 
