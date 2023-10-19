@@ -1,7 +1,7 @@
 # Data Visualization: 2023 US Women's Gymnastics Championships
 
 ## Motivation
-After learning gymnastics growing up, I have always been interested in watching the sport at the professional level. Though Women's gymnastics has fairly high viewership in Olympic years, this dwindles in the off-years, leading to very limited available data analysis. I began this analysis of the 2023 US Championships with two main goals:
+Since I learned gymnastics growing up, I have always been interested in watching the sport at the professional level. Though Women's gymnastics has fairly high viewership in Olympic years, this dwindles in the off-years, leading to very limited available data analysis. I began this analysis of the 2023 US Championships with two main goals:
 1. to visualize the rankings of gymnasts on each event and the magnitude of their score differences
 2. to determine which gymnasts have the potential to be on a highest-scoring 5 member team
 
