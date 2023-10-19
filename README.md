@@ -10,17 +10,18 @@ The second goal requires additional context. While this competition was not dire
 
 ## Features
 ### Visualization of All-Around Scores
-There are three different ways to view All-Around scores. 
-1. gym/figures/AA/Top 10 Average AA Performances: bar chart of the top 10 average AA performances with hatches differentiating scores from each event and colors differentiating athletes
-2. gym/figures/AA/Top 10 Average AA Performances Across Days -> slope chart of the top 10 average AA performances to highlight trends across the two days
-3. gym/figures/AA/Top 10 AA Performances by Day -> bar charts of the top 10 AA performances with each day of competition
+There are three different ways to view All-Around scores:
+1. bar chart of the top 10 average AA performances with hatches differentiating scores from each event and colors differentiating athletes (gym/figures/AA/Top 10 Average AA Performances) 
+2. slope chart of the top 10 average AA performances to highlight trends across the two days with colors differentiating athletes (gym/figures/AA/Top 10 Average AA Performances Across Days)
+3. bar charts of the top 10 AA performances for each day of competition with hatches differentiating scores from each event and colors differentiating athletes (gym/figures/AA/Top 10 AA Performances by Day)
 ### Visualization of Event Scores
-
+There are two different ways to view event scores:
+1. bar chart of the top 10 average event performances with colors differentiating athletes and error bars denoting their score range across the days (gym/figures/[EVENT]/Top 10 Average [EVENT] Performances)
+2. bar chart of the top 10 average event performances from each day with colors differentiating athletes (gym/figures/[EVENT]/Top 10 [EVENT] Performances Across Days)
 ### 3-up, 3-count Algorithm
 An international team final competition allows for 3 team members to compete on each event, with all 12 event scores counting towards the team score. Assuming the strategy would be to use the 3 highest scoring routines out of the 5 members for each event, the developed algorithm calculates a presumptive "team score" to simulate a 3-up, 3-count competition format. This is executed for every combination of 5 athletes.
 ### Visualization of Highest Scoring Teams
-From this 
-
+For Day 1, Day 2, and on average, a pair of bar charts and tables display the highest scoring teams among all possible teams. Bar charts have hatches differentiating scores from each event and colors differentiating athletes. (gym/figures/Team/)
 ## How to Run
 1. Clone repository
 2. Run all cells in US_Champs.ipynb
