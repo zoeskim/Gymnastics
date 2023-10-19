@@ -17,7 +17,7 @@ There are three different ways to view All-Around scores:
 ### Visualization of Event Scores
 There are two different ways to view event scores:
 1. bar chart of the top 10 average event performances with colors differentiating athletes and error bars denoting their score range across the days (gym/figures/[EVENT]/Top 10 Average [EVENT] Performances)
-2. bar charts of the top 10 average event performances from each day with colors differentiating athletes (gym/figures/[EVENT]/Top 10 [EVENT] Performances Across Days)
+2. bar charts of the top 10 event performances from each day with colors differentiating athletes (gym/figures/[EVENT]/Top 10 [EVENT] Performances Across Days)
 ### 3-up, 3-count Algorithm
 An international team final competition allows for 3 team members to compete on each event, with all 12 event scores counting towards the team score. Assuming the strategy would be to use the 3 highest scoring routines out of the 5 members for each event, the developed algorithm calculates a presumptive "team score" to simulate a 3-up, 3-count competition format. This is executed for every combination of 5 athletes.
 ### Visualization of Highest Scoring Teams
