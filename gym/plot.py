@@ -144,8 +144,8 @@ def event_by_day_bar_chart(AA, event, n=10):
 
 
 def event_avg_bar_chart(AA, event, n=10):
-    """ Create bar plots of the top n average event scores,
-    color-coded by universal athlete colors."""
+    """ Create bar plot of the top n average event scores,
+    color-coded by universal athlete colors. """
     _, ax = plt.subplots(figsize=(8, 6))
     # create temporary dataframe of top n average event scores
     event_by_average = AA.sort_values(by=f'{event}_avg', ascending=False)[:n]
@@ -172,8 +172,8 @@ def event_avg_bar_chart(AA, event, n=10):
         plt.savefig(f'./gym/figures/{event}/Top {n} Average {event} Performances')
 
 def team_scores_bar_chart(team_data, occ, n=10):
-    """ Create bar plots of the top n team scores of all possible team iterations for occasion specified,
-    color-coded by universal athlete colors and hatch-colded by event."""
+    """ Create bar plot of the top n team scores of all possible team iterations for occasion specified,
+    color-coded by universal athlete colors and hatch-coded by event. """
     fig, axs = plt.subplots(figsize=(20, 10), nrows=1, ncols=2, width_ratios=[3,1])
 
     team_data.set_index('Team ID', inplace=True)
@@ -229,7 +229,7 @@ def team_scores_bar_chart(team_data, occ, n=10):
 
 
 def build_top_team_table(top_team_ids, removed_teams, team_df, occ, annotations_y=0):
-    """ Build a table of Team IDs with corresponding athlete names to accompany team scores bar chart."""
+    """ Build a table of Team IDs with corresponding athlete names to accompany team scores bar chart. """
     # get exceptions to note (cases where one team member could be swapped for other athletes)
     duplicate_team_ids, team_constants, team_variables = get_duplicates_for_top_team_table(top_team_ids, removed_teams, team_df)
     # create option for annotations to note exceptions
