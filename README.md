@@ -22,9 +22,12 @@ There are two different ways to view event scores:
 An international team final competition allows for 3 team members to compete on each event, with all 12 event scores counting towards the team score. Assuming the strategy would be to use the 3 highest scoring routines out of the 5 members for each event, the developed algorithm calculates a presumptive "team score" to simulate a 3-up, 3-count competition format. This is executed for every combination of 5 athletes.
 ### Visualization of Highest Scoring Teams
 For Day 1, Day 2, and on average, a pair of bar charts and tables display the highest-scoring teams among all possible teams. Bar charts have hatches differentiating scores from each event and colors differentiating athletes. (gym/figures/Team/)
-## How to Run
+
+## How to Use
+The notebook (US_Champs.ipynb) explains why each chart was created and insights gleaned from these charts, as well as background information to contextualize the data.
 1. Clone repository
 2. Run all cells in US_Champs.ipynb
+*NOTE:* The tables corresponding to the highest-scoring teams won't display on the GitHub notebook preview.
 ### Accessibility
 With the number of athletes, it was challenging to find a unique combination of colors to represent them. This challenge was compounded in trying to find a discernible palette of colors that was also color-blind friendly. To account for this, the colors used are easily accessible and editable to customize user experience. 
 To change the colors, 
