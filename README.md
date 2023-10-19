@@ -21,7 +21,7 @@ There are two different ways to view event scores:
 ### 3-up, 3-count Algorithm
 An international team final competition allows for 3 team members to compete on each event, with all 12 event scores counting towards the team score. Assuming the strategy would be to use the 3 highest scoring routines out of the 5 members for each event, the developed algorithm calculates a presumptive "team score" to simulate a 3-up, 3-count competition format. This is executed for every combination of 5 athletes.
 ### Visualization of Highest Scoring Teams
-For Day 1, Day 2, and on average, a pair of bar charts and tables display the highest scoring teams among all possible teams. Bar charts have hatches differentiating scores from each event and colors differentiating athletes. (gym/figures/Team/)
+For Day 1, Day 2, and on average, a pair of bar charts and tables display the highest-scoring teams among all possible teams. Bar charts have hatches differentiating scores from each event and colors differentiating athletes. (gym/figures/Team/)
 ## How to Run
 1. Clone repository
 2. Run all cells in US_Champs.ipynb
@@ -44,6 +44,8 @@ All code was executed in Python, with the following libraries utilized:
 - plotly
 
 ## Conclusions
+The primary purpose of this analysis was simply to create visuals that make the scores easier to comprehend and compare. The created visualizations show who has the highest scoring potential among the athletes for each event as well as the consistency in hitting that score potential across multiple days.
+However, my underlying goal was to make predictions about the World Championships team based on the highest-scoring team data. Using the average highest-scoring teams data, my ideal team was Simone Biles, Shilese Jones, Skye Blakely, Kaliya Lincoln, and Leanne Wong. The first 4 mentioned athletes are consistently on the highest-scoring teams, while Leanne was a personal pick based on the consistency of her scores and her ability to fill in on any event in case of emergency. The team ended up being the same, except Joscelyn Roberson in place of Kaliya Lincoln. This slightly reduced the team scoring potential (~0.2), but was likely based on factors outside the scope of this analysis. Gymnastics as a sport is a balance of risk/reward, and I speculate that Kaliya was left off the team due to her lack of prior international experience. With the increased mental pressure of international competitions, some athletes tend to falter in their consistency. Since Team USA didn't need +0.2 to win gold, they didn't take the risk in this case.
 
 ## Future Applications
 I tried to make this code as generalized as possible, such that its visualization methods and algorithms can easily applied to other events. If you have interest in generating these graphs for other competitions, email me at zoeekimm@gmail.com. </br>
