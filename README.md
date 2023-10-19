@@ -9,9 +9,14 @@ The first goal is more straightforward. Women's gymnastics has four events: vaul
 The second goal requires additional context. While this competition was not directly used to select athletes for the World Championships a few weeks later, it did provide a first look at all routines for the 2023 year and a baseline for score analysis. Using these scores, I calculated team scores for every possible combination of 5 athletes for comparison. The intention was not necessarily to predict the World's team, because other factors that cannot be quantified also go into consideration; rather, it was meant to provide insight into which athletes were "in the mix" for selection based on this competition and promote discussion among the viewership community.
 
 ## Features
+### Visualization of All-Around Scores
+
+### Visualization of Event Scores
+
 ### 3-up, 3-count Algorithm
-
-
+An international team final competition allows for 3 team members to compete on each event, with all 12 event scores counting towards the team score. Assuming the strategy would be to use the 3 highest scoring routines out of the 5 members for each event, the developed algorithm calculates a presumptive "team score" to simulate a 3-up, 3-count competition format. This is executed for every combination of 5 athletes.
+### Visualization of Highest Scoring Teams
+From this 
 
 ## How to Run
 1. Clone respository
@@ -26,9 +31,16 @@ To change the colors,
 5. Access new figures in gym/figures/.
 
 ## Methods
+All code was executed in Python, with the following libraries utilized:
+- pandas
+- numpy
+- matplotlib
+- itertools
+- openpyxl
+- plotly
 
 ## Conclusions
 
 ## Future Applications
-I tried to make this code as generalized as possible, such that its visualization methods and algorithms can easily applied to other competions. 
+I tried to make this code as generalized as possible, such that its visualization methods and algorithms can easily applied to other events. If you have interest in generating these graphs for other competitions, email me at zoeekimm@gmail.com.
 
