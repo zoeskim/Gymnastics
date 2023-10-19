@@ -55,7 +55,7 @@ def AA_slope_plot(names, colors, AA_day1, AA_day2, n=10):
 
 
 def AA_avg_bar_chart(AA, n=10):
-    """ Create bar plot of the top n All Around scores for each night of competition,
+    """ Create bar plot of the top n average All Around scores,
     color-coded by universal athlete colors and hatch-coded by event."""
     _, ax = plt.subplots(figsize=(10,10))
     # create temporary dataframe of top n entries sorted by average AA performance
@@ -144,7 +144,7 @@ def event_by_day_bar_chart(AA, event, n=10):
 
 
 def event_avg_bar_chart(AA, event, n=10):
-    """ Create bar plots of the top n event scores for each night of competition,
+    """ Create bar plots of the top n average event scores,
     color-coded by universal athlete colors."""
     _, ax = plt.subplots(figsize=(8, 6))
     # create temporary dataframe of top n average event scores
@@ -172,7 +172,7 @@ def event_avg_bar_chart(AA, event, n=10):
         plt.savefig(f'./gym/figures/{event}/Top {n} Average {event} Performances')
 
 def team_scores_bar_chart(team_data, occ, n=10):
-    """ Create bar plots of the top n team scores of all possible team iterations,
+    """ Create bar plots of the top n team scores of all possible team iterations for occasion specified,
     color-coded by universal athlete colors and hatch-colded by event."""
     fig, axs = plt.subplots(figsize=(20, 10), nrows=1, ncols=2, width_ratios=[3,1])
 
