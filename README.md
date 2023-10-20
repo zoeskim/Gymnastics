@@ -31,7 +31,7 @@ The notebook (US_Champs.ipynb) explains why each chart was created and insights 
 *NOTE:* The tables corresponding to the highest-scoring teams won't display on the GitHub notebook preview.
 ### Accessibility
 With the number of athletes, it was challenging to find a unique combination of colors to represent them. This challenge was compounded in trying to find a discernible palette of colors that was also color-blind friendly. To account for this, the colors used are easily accessible and editable to customize user experience. 
-To change the colors, 
+To change the colors:
 1. Open the Excel file 2023 US Championships Results. (path: gym/data/)
 2. On the day 1 sheet, edit individual athlete [color names](https://matplotlib.org/stable/gallery/color/named_colors.html) (or HEX codes).
 3. Delete all pre-existing figures. (path: gym/figures/)
