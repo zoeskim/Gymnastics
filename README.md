@@ -24,7 +24,7 @@ An international team final competition allows for 3 team members to compete on 
 For Day 1, Day 2, and on average, a pair of bar charts and tables display the highest-scoring teams among all possible teams. Bar charts have hatches differentiating scores from each event and colors differentiating athletes. (gym/figures/Team/)
 
 ## How to Use
-The notebook (US_Champs.ipynb) explains why each chart was created and insights gleaned from these charts, as well as background information to contextualize the data.
+The notebook (US_Champs.ipynb) walks through each chart's purpose and insights, as well as background information to contextualize the data.
 1. Clone repository
 2. Run all cells in US_Champs.ipynb
 
